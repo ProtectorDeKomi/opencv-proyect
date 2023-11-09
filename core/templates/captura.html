@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Captura de Imagen</title>
+</head>
+<body>
+    <button id="capturar">Capturar Imagen</button>
+    <img id="imagen_capturada" style="display: none;" />
+    <script type="text/javascript">
+        const capturarBoton = document.getElementById('capturar');
+        const imagenCapturada = document.getElementById('imagen_capturada');
+
+        capturarBoton.addEventListener('click', () => {
+            const constraints = { video: true };
+
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then((stream) => {
+                    const track = stream.getVideoTracks()[0];
+                    const imageCapture = new ImageCapture(track);
+
+                    imageCapture.takePhoto()
+                        .then((blob) => {
+                            imagenCapturada.src = URL.createObjectURL(blob);
+                            imagenCapturada.style.display = 'block';
+
+                            // Aquí puedes enviar la imagen al servidor Flask para su procesamiento
+                            // Puedes usar JavaScript para enviar la imagen a través de una solicitud POST.
+                            // Por ejemplo, puedes usar la API Fetch.
+
+                            fetch('/procesar', {
+                                 method: 'POST',
+                                 body: blob
+                             })
+                             .then(response => response.text())
+                             .then(data => console.log(data))
+                        })
+                        .catch(error => console.error('Error al tomar la foto:', error));
+                })
+                .catch(error => console.error('Error al acceder a la cámara:', error));
+        });
+    </script>
+</body>
+</html>
