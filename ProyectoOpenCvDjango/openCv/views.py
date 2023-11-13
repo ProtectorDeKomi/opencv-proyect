@@ -35,6 +35,7 @@ def procesar(request):
             mensaje = "Rostro encontrado"
         else:
             mensaje = "No se encontraron rostros"
+            tipo = "alert alert-success"
 
         # Guardar la imagen con el rectángulo dibujado
         cv2.imwrite('static/imagen_procesada.jpg', imagen)

@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const video = document.getElementById('video');
     const capturarAnalizarBtn = document.getElementById('capturarAnalizar');
     const mensajeP = document.getElementById('mensaje');
+    const type = document.getElementById('type');
 
     navigator.mediaDevices.getUserMedia({ video: true })
         .then(function (stream) {
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             detenerAnimacion(); // Detener animación después de recibir la respuesta
             mensajeP.textContent = data.mensaje;
+            
         })
         .catch(error => {
             detenerAnimacion(); // Detener animación en caso de error
