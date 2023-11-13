@@ -1,0 +1,77 @@
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+.video-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Añadido para mejorar apariencia del video */
+}
+
+.video-container h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#capturarAnalizar {
+    margin-top: 20px;
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#capturarAnalizar:hover,
+#capturarAnalizar:active {
+    background-color: #1e7e34;
+    border-color: #1e7e34;
+}
+
+#capturarAnalizar .progress-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#capturarAnalizar.capturando .progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 100%;
+    background-color: #3498db;
+    animation: progressBar 2s linear infinite;
+}
+
+@keyframes progressBar {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
